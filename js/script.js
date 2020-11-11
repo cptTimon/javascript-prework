@@ -1,3 +1,6 @@
+let playerWins = 0;
+let computerWins = 0;
+
 function playGame(playerInput){
 
     clearMessages();
@@ -60,16 +63,21 @@ function playGame(playerInput){
     } */
 
     printMessage('Wynik gry: ' + displayResult(computerMove, playerMove));
+
+    console.log('Liczenie wyniku:' + playerWins + ',' + computerWins);
 }
 
 document.getElementById('playRock').addEventListener('click', function(){
     playGame(1);
+    printResult();
   });
 
   document.getElementById('playPaper').addEventListener('click', function(){
     playGame(2);
+    printResult();
   });
 
   document.getElementById('playScissors').addEventListener('click', function(){
     playGame(3);
+    printResult();
   });
