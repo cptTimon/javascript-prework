@@ -1,5 +1,3 @@
-let playerWins = 0;
-let computerWins = 0;
 
 function playGame(playerInput){
 
@@ -25,7 +23,7 @@ function playGame(playerInput){
 
 document.getElementById('playRock').addEventListener('click', function(){
     playGame(1);
-
+;
   });
 
   document.getElementById('playPaper').addEventListener('click', function(){

@@ -1,3 +1,6 @@
+let playerWins = 0;
+let computerWins = 0;
+
 function getMoveName(argMoveId){
 	if(argMoveId == 1){
 	  return 'kamień';
@@ -12,38 +15,42 @@ function getMoveName(argMoveId){
 }
 
 function displayResult(argComputerMove, argPlayerMove) {
+	let message = '';
 	if( argComputerMove == 'kamień' && argPlayerMove == 'papier'){
-		playerWins = playerWins + 1;
-		return 'Gracz wygrał!';
+		playerWins++;
+		message = 'Gracz wygrał!';
 	} else if (argComputerMove == 'kamień' && argPlayerMove == 'kamień'){
-		return 'Jest remis!';
+		message = 'Jest remis!';
 	} else if (argComputerMove == 'kamień' && argPlayerMove == 'nożyce'){
-		computerWins = computerWins + 1;
-		return 'Komputer wygrał!';
+		computerWins++;
+		message = 'Komputer wygrał!';
 	} else if ((argComputerMove == 'kamień' || argComputerMove == 'papier' || argComputerMove == 'nożyce') && argPlayerMove == 'nieznany ruch'){
-		return 'Gracz robi głupoty!';
+		message = 'Gracz robi głupoty!';
 	} else if (argComputerMove == 'papier' && argPlayerMove == 'papier'){
-		return 'Jest remis!';
+		message = 'Jest remis!';
 	} else if (argComputerMove == 'papier' && argPlayerMove == 'kamień'){
-		computerWins = computerWins + 1;
-		return 'Komputer wygrał!';
+		computerWins++;
+		message = 'Komputer wygrał!';
 	} else if (argComputerMove == 'papier' && argPlayerMove == 'nożyce'){
-		playerWins = playerWins + 1;
-		return 'Gracz wygrał!';
+		playerWins++;
+		message = 'Gracz wygrał!';
 	} else if (argComputerMove == 'nożyce' && argPlayerMove == 'papier'){
-		computerWins = computerWins + 1;
-		return 'Komputer wygrał!';
+		computerWins++;
+		message = 'Komputer wygrał!';
 	} else if (argComputerMove == 'nożyce' && argPlayerMove == 'kamień'){
-		playerWins = playerWins + 1;
-		return 'Gracz wygrał!';
+		playerWins++;
+		message = 'Gracz wygrał!';
 	} else if (argComputerMove == 'nożyce' && argPlayerMove == 'nożyce'){
-		return 'Jest remis!';
+		message = 'Jest remis!';
 	}
-}
-
-function printResult(){
-	console.log('Nie wiem czemu nie dziala');
-	return 'Wynik to:' + playerWins + 'gracza do' + computerWins + 'komputera';
+	document.getElementById('result').innerHTML = 'Wynik to: Gracz: ' + playerWins + ' Komputer: ' + computerWins;
+	if (playerWins >= 3 || computerWins >= 3){
+		document.getElementById('result').innerHTML = 'Koniec gry. Wynik to: Gracz: ' + playerWins + ' Komputer: ' + computerWins;
+		document.getElementById('playRock').disabled = true;
+		document.getElementById('playPaper').disabled = true;
+		document.getElementById('playScissors').disabled = true;
+	}
+	return message;
 }
 
 function printMessage(msg){
